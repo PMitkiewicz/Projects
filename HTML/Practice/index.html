@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>HTML Exercise</h1>
+    <style>
+        #content {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href pedro_nav="exercise/test.html">00 - Test</a>
+        <a href pedro_nav="exercise/text1.html">01 - Text1</a>
+        <a href pedro_nav="exercise/text2.html">02 - Text2</a>
+        <a href pedro_nav="exercise/list.html">03 - List</a>
+    </nav>
+    <section id="content"></section>
+    <br>
+    <footer> Learning HTML </footer>
+    <script> document.querySelectorAll('[pedro_nav]').forEach(link=>{
+        const content=document.getElementById("content")
+        link.onclick=(clickEvent)=>{
+            clickEvent.preventDefault()
+            fetch(link.getAttribute('pedro_nav'))
+            .then(element=>element.text())
+            .then(html=>content.innerHTML=html)
+    }})
+    </script>
+    <!--this is a script to display the html content in the links on the same web pag when clicked
+    query selector all gets all the links, we are then iterating through them because we're getting multiple
+    on click we are preventing the default behavior, going to a new page
+    we are then getting the content, and using the ajax command fetch, getting the html text withn the link
+    then, we get the html content using another then, and set the attrivute of content inner html equal to that
+    links html content-->
+</body>
+</html>
